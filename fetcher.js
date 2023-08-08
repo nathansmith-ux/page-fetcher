@@ -9,23 +9,23 @@ const fileLocation = userInput[1];
 
 /**
  * A script makes an HTTPS request to a domain
- * @param url input 
+ * @param url input
  * @param callback function
  * @returns A file with the body content in the specified location
  */
 request(url, (error, response, body) => {
   if (error) {
-    console.log("Request failed", error)
+    console.log("Request failed", error);
     return;
   }
-  console.log("statusCode:", response && response.statusCode)
+  console.log("statusCode:", response && response.statusCode);
 
   // After request is made body data is used to write a file
   fs.writeFile(fileLocation, body, err => {
     if (err) {
-      console.log("There was an error writing the file", err)
+      console.log("There was an error writing the file", err);
       return;
     }
     console.log(`Downloaded and saved ${body.length} to ${fileLocation}`);
-  })
+  });
 });
